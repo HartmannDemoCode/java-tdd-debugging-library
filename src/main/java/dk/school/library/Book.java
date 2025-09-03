@@ -27,19 +27,17 @@ public class Book {
         return loaned;
     }
 
-    // BUG 1: equals sammenligner titel (og bruger ==) i stedet for ISBN og equals
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Book)) return false;
         Book other = (Book) o;
-        return this.title == other.title; // forkert og subtil ift. kravene
+        return this.title == other.title;
     }
 
-    // BUG 2: hashCode er inkonsistent med equals og afhænger af author
     @Override
     public int hashCode() {
-        return Objects.hash(author); // burde baseres på ISBN
+        return Objects.hash(author);
     }
 
     @Override
